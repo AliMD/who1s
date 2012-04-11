@@ -9,6 +9,9 @@ $server = $_GET['server'] or die('Invalid server address');
 $who1s = new who1s;
 $hostnames = $who1s->hostnames;
 
+$domain = $who1s->sanitize_url($domain);
+$server = $who1s->sanitize_url($server);
+
 $who1s->is_domain($domain) or die('Invalid url address');
 $who1s->is_hostname($server, $hostnames) or die('Invalid server address');
 

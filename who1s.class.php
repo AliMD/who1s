@@ -10,8 +10,12 @@ class who1s {
 		'ir'	=>	'whois.nic.ir'	// TODO: To be extended...
 	);
 	
+	public function sanitize_url($url){
+		return preg_replace('#^(https?://)?(www.)?#i', '', $url);
+	}
+	
 	public function is_domain($domain){
-		return preg_match("#^(https?://)?(www.)?[a-z0-9]+([-]?[a-z0-9]+)*[\.-]?[a-z0-9]+([-]?[a-z0-9]+)*([\.-]?[a-z]{2,})*(\.[a-z]{2,5})+$#i",$domain);
+		return preg_match('#^[a-z0-9]+([-]?[a-z0-9]+)*[\.-]?[a-z0-9]+([-]?[a-z0-9]+)*([\.-]?[a-z]{2,})*(\.[a-z]{2,5})+$#i',$domain);
 	}
 	
 	public function is_hostname($server,$arr){
