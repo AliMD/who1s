@@ -1,31 +1,29 @@
 <?php
 define("1DEVS",1);
 
-require_once("who1s.class.php");
+require_once("./whois-servers-list/whois-servers-list.php");
+require_once("./who1s.class.php");
 
 $domain = $_GET['url'] or die('Invalid url address');
 $server = $_GET['server'] or die('Invalid server address');
+$err_no=$err_str='';
 
-$who1s = new who1s;
-$hostnames = $who1s->hostnames;
+$who1s = new who1s($WHOIS_SERVERS_LIST);
 
 $domain = $who1s->sanitize_url($domain);
 $server = $who1s->sanitize_url($server);
 
 $who1s->is_domain($domain) or die('Invalid url address');
-$who1s->is_hostname($server, $hostnames) or die('Invalid server address');
+$who1s->is_hostname($server, $who1s->hostnames) or die('Invalid server address');
 
 $tld = $who1s->get_tld($domain);
-$who1s->valid_tld($tld, $hostnames) or die('Invalid top-level domain address');
+$who1s->valid_tld($tld, $who1s->hostnames) or die('Invalid top-level domain address');
 
-$socket = fsockopen($server, 43, $err_no, $err_str, 15) or die("Error #{$err_no}: {$err_str}");
-fwrite($socket, "$domain\r\n");
+$socket = $who1s->connect($server, 15) or die("Error #{$err_no}: {$err_str}");
+$who1s->push($socket, $domain);
 
-$text = '';
-while(!feof($socket)){
-	$text .= fgets($socket);
-}
+$text = $who1s->pull($socket);
 
-echo '<pre>';
-echo $text;
-fclose($socket);
+include_once("./template.php");
+
+$who1s->disconnect($socket);

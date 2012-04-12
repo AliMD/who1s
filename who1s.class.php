@@ -3,12 +3,11 @@ defined("1DEVS") or die("Access Denied!");
 
 class who1s {
 	
-	public $hostnames = array (
-		'com'	=>	'whois.internic.com',
-		'net'	=>	'whois.internic.com',
-		'org'	=>	'whois.internic.com',
-		'ir'	=>	'whois.nic.ir'	// TODO: To be extended...
-	);
+	public $hostnames;
+	
+	public function who1s($whois_servers){
+		$this->hostnames = $whois_servers;
+	}
 	
 	public function sanitize_url($url){
 		return preg_replace('#^(https?://)?(www.)?#i', '', $url);
@@ -19,7 +18,12 @@ class who1s {
 	}
 	
 	public function is_hostname($server,$arr){
-		return in_array($server,$arr);
+		$ret = false;
+		foreach($arr as $key=>$val){
+			$hostname_arr = is_array($val)?$val:$arr;
+			in_array($server, $hostname_arr) and $ret = true;
+		}
+		return $ret;
 	}
 	
 	public function get_tld($domain){
@@ -30,4 +34,24 @@ class who1s {
 		return array_key_exists($tld, $arr);
 	}
 	
+	public function connect($hostname,$timeout){
+		global $err_no, $err_str;
+		return fsockopen($hostname, 43, $err_no, $err_str, $timeout);
+	}
+	
+	public function push($handler, $domain){
+		return fwrite($handler, "$domain\r\n");
+	}
+	
+	public function pull($handler){
+		$test='';
+		while(!feof($handler)){
+			$text .= fgets($handler);
+		}
+		return $text;
+	}
+	
+	public function disconnect($handler){
+		fclose($handler);
+	}
 }
