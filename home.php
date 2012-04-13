@@ -4,8 +4,8 @@ define("1DEVS",1);
 require_once("./whois-servers-list/whois-servers-list.php");
 require_once("./who1s.class.php");
 
-$domain = $_GET['url'] or die('Invalid url address');
-$server = $_GET['server'] or die('Invalid server address');
+$domain = $_GET['url'] or die('No url address');
+$server = $_GET['server'] or die('No server address');
 $err_no=$err_str='';
 
 $who1s = new who1s($WHOIS_SERVERS_LIST);

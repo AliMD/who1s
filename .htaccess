@@ -1,0 +1,8 @@
+# Prevents directory listing
+Options -Indexes
+
+# Set default directory page
+DirectoryIndex home.php
+
+#RewriteEngine On
+#RewriteRule ^(.+)\/server/(.+)\/?$ home.php?url=$1&server=$2 [L,NC]
