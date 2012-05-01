@@ -440,6 +440,7 @@ body{
 	bottom:0;
 	margin:auto;
 	z-index:999;
+        padding-top:45px;
 }
 #container{
 	width:800px;
@@ -486,7 +487,8 @@ body{
 	-moz-text-shadow: 0 0 15px #000;
 	-ms-text-shadow: 0 0 15px #000;
 	-webkit-text-shadow: 0 0 15px #000;
-	filter: glow(color=#333,strength=7); 
+	filter: glow(color=#333,strength=7);
+        z-index:999; 
 }
 
 #footer-logo a{
