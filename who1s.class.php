@@ -27,7 +27,7 @@ class who1s {
 	}
 	
 	public function get_tld($domain){
-		return strtolower(array_pop(explode('.',$domain)));
+		return @strtolower(array_pop(explode('.',$domain)));
 	}
 	
 	public function valid_tld($tld,$arr){
@@ -44,7 +44,7 @@ class who1s {
 	}
 	
 	public function pull($handler){
-		$test='';
+		$text='';
 		while(!feof($handler)){
 			$text .= fgets($handler);
 		}
