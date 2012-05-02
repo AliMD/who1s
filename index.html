@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-
-<title>who1s [BETA4]</title>
+<title>who1s [BETA5]</title>
 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Share' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
@@ -11,9 +10,48 @@
 
 <script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="script/main.js"></script>
+
+<style type="text/css">
+
+.ie #ie-callback {
+  display:block;
+}
+
+</style>
+
+<!-- 
+	Change LOG:
+    
+		beta 5:
+			1. IE block page added
+            
+        beta 4:
+        	1. some layout fixing
+            2. ajax search from down
+
+-->
 </head>
 
 <body>
+
+<div id="ie-callback">
+	<div id="container-ie-callback">
+	<div id="ie-pic"></div>
+    <h2 id="ie-head-text"> oooops, you are using Internet Explorer! </h2>
+    <p lang="en" > your browser is sucks, try something smarter Please!!
+we suggest <strong>Google Chrome</strong> to you! but its your decision, and we respect that! </p>
+	 <p lang="fa" > مرورگر وب شما افتضاحه! لطفا از مرورگر وب هوشمندتری استفاده کنید! ما به شما <strong>گوگل کروم</strong> را پیشنهاد میکنیم، اما این تصمیم شماست که از چه مرورگری استفاده کنید، و ما به تصمیمتان احترام میگذاریم! </p>
+     
+     <div id="browser-link">
+     
+     	<a href="http://www.mozilla.org/en-US/firefox/fx/" style="float:left;margin-right:10px;"><img src="images/header-logo-firefox.png" width="250" height="95" /></a>
+        <a href="https://www.google.com/chrome" style="float:left;"><img src="images/header-logo-chrome.png" width="250" height="95" /></a>
+        <a href="http://www.apple.com/safari/" style="float:left;"><img src="images/header-logo-safari.png" width="250" height="95" /></a>
+     
+     </div>
+     
+	</div>
+</div>
 
 <div id="callback-loading">
     <div id="load-con-container">

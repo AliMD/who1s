@@ -1,6 +1,75 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+
+#ie-callback{
+	display:none;
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:1000;
+	background-color:#FFFFFF;	
+}
+#container-ie-callback{
+	width:800px;
+	height:600px;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	position:absolute;
+	margin:auto;	
+}
+
+#ie-pic{
+	width:225px;
+	height:227px;
+	margin:auto;
+	background-image:url(images/ie.jpg);
+	margin-bottom:15px;	
+}
+
+#ie-head-text{
+	text-align:center;
+	font-size:31px;
+	font-family:Tahoma, Geneva, sans-serif;
+	margin-bottom:15px;
+}
+#ie-callback p{
+	display:block;
+	text-align:center;
+	font-size:15px;
+	font-family:Tahoma, Geneva, sans-serif;	
+	width:550px;
+	margin:auto;
+	margin-bottom:10px;
+	color:#333333;
+}
+
+#ie-callback p[lang=fa]{
+	display:block;
+	text-align:center;
+	font-size:15px;
+	font-family:Tahoma, Geneva, sans-serif;	
+	width:550px;
+	margin:auto;
+	direction:rtl;
+}
+
+#browser-link{
+	width:760px;
+	height:95px;
+	border: #999 1px dashed;
+	margin:auto;
+	margin-top:60px;
+	padding:15px;	
+}
+
+#browser-link a img{
+	border:none;
+}
+
 /* ------------ Loading animation --------- */
 
 #callback-loading{
